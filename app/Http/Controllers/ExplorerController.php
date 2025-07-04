@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Explorer;
 use App\Services\ExplorerService;
-use App\Http\Requests\StoreExplorerResquest;
+use App\Http\Requests\StoreExplorerRequest;
 use App\Http\Requests\UpdateExplorerLocationRequest;
 
 
@@ -23,7 +23,7 @@ class ExplorerController extends Controller
         return response()->json($explorers);
     }
 
-    public function store(StoreExplorerResquest $request)
+    public function store(StoreExplorerRequest $request)
     {
         $validated = $request->validated();
 

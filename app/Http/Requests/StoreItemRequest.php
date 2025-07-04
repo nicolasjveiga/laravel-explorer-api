@@ -4,9 +4,11 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreExplorerResquest extends FormRequest
+class StoreItemRequest extends FormRequest
 {
-
+    /**
+     * Determine if the user is authorized to make this request.
+     */
     public function authorize(): bool
     {
         return true;
@@ -21,9 +23,10 @@ class StoreExplorerResquest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'age' => 'required|integer|min:0',
+            'value' => 'required|numeric|min:0',
             'latitude' => 'required|numeric',
             'longitude' => 'required|numeric',
+            'explorer_id' => 'required|exists:explorers,id',
         ];
     }
 }

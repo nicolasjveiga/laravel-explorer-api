@@ -3,27 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
-use Illuminate\Http\Request;
+use App\Services\ItemService;
+use App\Http\Requests\StoreItemRequest;
 
 class ItemController extends Controller
 {
+    public function __construct(ItemService $itemService)
+    {
+        $this->itemService = $itemService;
+    }
+
     public function index()
     {
         $items = Item::with('explorer', 'tradeItems')->get();
         return response()->json($items);
     }
 
-    public function store(Request $request)
+    public function store(StoreItemRequest $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'value' => 'required|numeric|min:0',
-            'latitude' => 'required|numeric',
-            'longitude' => 'required|numeric',
-            'explorer_id' => 'required|exists:explorers,id',
-        ]);
+        $validated = $request->validated();
 
-        $item = Item::create($request->all());
+        $item = $this->itemService->createItem($validated);
 
         return response()->json($item, 201);
     }
