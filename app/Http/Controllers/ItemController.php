@@ -17,8 +17,9 @@ class ItemController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
             'value' => 'required|numeric|min:0',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
             'explorer_id' => 'required|exists:explorers,id',
         ]);
 
@@ -33,23 +34,4 @@ class ItemController extends Controller
         return response()->json($item);
     }
 
-    public function update(Request $request, Item $item)
-    {
-        $request->validate([
-            'name' => 'sometimes|required|string|max:255',
-            'description' => 'nullable|string',
-            'value' => 'sometimes|required|numeric|min:0',
-            'explorer_id' => 'sometimes|required|exists:explorers,id',
-        ]);
-
-        $item->update($request->all());
-
-        return response()->json($item);
-    }
-
-    public function destroy(Item $item)
-    {
-        $item->delete();
-        return response()->json(null, 204);
-    }
 }

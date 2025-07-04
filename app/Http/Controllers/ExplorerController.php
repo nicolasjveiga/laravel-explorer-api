@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Explorer;
-use Illuminate\Http\Request;
 use App\Services\ExplorerService;
+use App\Http\Requests\StoreExplorerResquest;
 use App\Http\Requests\UpdateExplorerLocationRequest;
 
 
@@ -23,16 +23,11 @@ class ExplorerController extends Controller
         return response()->json($explorers);
     }
 
-    public function store(Request $request)
+    public function store(StoreExplorerResquest $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'age' => 'required|integer|min:0',
-            'latitude' => 'required|numeric',
-            'longitude' => 'required|numeric',
-        ]);
+        $validated = $request->validated();
 
-        $explorer = Explorer::create($request->all());
+        $explorer = $this->explorerService->createExplorer($validated);
 
         return response()->json($explorer, 201);
     }
@@ -47,7 +42,9 @@ class ExplorerController extends Controller
     public function update(UpdateExplorerLocationRequest $request, Explorer $explorer)
     {
         $validated = $request->validated();
+
         $explorer = $this->explorerService->updateLocation($explorer, $validated);
+
         return response()->json($explorer);
     }
 }

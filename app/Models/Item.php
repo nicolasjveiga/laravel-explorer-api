@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Item extends Model
 {
-    protected $fillable = ['name', 'description', 'value', 'explorer_id'];
+    protected $fillable = ['name', 'value', 'latitude', 'longitude', 'explorer_id'];
 
     public function explorer()
     {
