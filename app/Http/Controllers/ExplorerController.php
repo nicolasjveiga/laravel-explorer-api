@@ -11,6 +11,8 @@ use App\Http\Requests\UpdateExplorerLocationRequest;
 
 class ExplorerController extends Controller
 {
+    protected $explorerService;
+
     public function __construct(ExplorerService $explorerService)
     {
         $this->explorerService = $explorerService;

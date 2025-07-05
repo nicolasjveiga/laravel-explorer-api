@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExplorerController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\TradeController;
 
 
 Route::get('/user', function (Request $request) {
@@ -18,3 +19,5 @@ Route::put('/explorers/{explorer}/edit', [ExplorerController::class, 'update']);
 Route::get('/items', [ItemController::class, 'index']);
 Route::post('/items', [ItemController::class, 'store']);
 Route::get('/items/{item}', [ItemController::class, 'show']);
+
+Route::post('/trades', [TradeController::class, 'store']);

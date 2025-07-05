@@ -5,7 +5,7 @@ use App\Models\Explorer;
 
 class ExplorerService
 {
-     public function createExplorer(array $data): Explorer
+    public function createExplorer(array $data): Explorer
     {
         return Explorer::create([
             'name' => $data['name'],

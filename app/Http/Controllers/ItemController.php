@@ -8,6 +8,8 @@ use App\Http\Requests\StoreItemRequest;
 
 class ItemController extends Controller
 {
+    protected $itemService;
+
     public function __construct(ItemService $itemService)
     {
         $this->itemService = $itemService;

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Trade extends Model
 {
-    protected $fillable = ['name', 'age', 'latitude', 'longitude'];
+    protected $fillable = ['from_explorer_id', 'to_explorer_id'];
 
     public function fromExplorer()
     {
