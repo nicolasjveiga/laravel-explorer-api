@@ -28,7 +28,10 @@ docker compose up -d
 ### Configuração Inicial
 
 1. **Criar o arquivo `.env`:**  
-   Copie o conteúdo do arquivo `.env.example` para um novo arquivo `.env` dentro da pasta raiz do projeto.
+
+   ```bash
+      cp .env.example .env
+   ```
 
 2. **Abrir o terminal dentro do Docker:**  
    Execute o comando abaixo para acessar o terminal do container:
