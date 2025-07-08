@@ -6,6 +6,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\TradeController;
 use App\Http\Controllers\AuthController;
 
+//Esse é o antigo endpoint obrigatório de post /explorers
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
@@ -19,5 +20,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/items/{item}', [ItemController::class, 'show']);
 });
 
-Route::post('/trades', [TradeController::class, 'store']);
+Route::post('/trade', [TradeController::class, 'store']);
 Route::get('/items', [ItemController::class, 'index']);
