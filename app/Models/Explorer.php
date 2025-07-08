@@ -22,4 +22,10 @@ class Explorer extends Model
     {
         return $this->hasMany(Trade::class, 'to_explorer_id');
     }
+
+    public function histories()
+    {
+        return $this->hasMany(History::class);
+    }
+
 }

@@ -49,4 +49,12 @@ class ExplorerController extends Controller
 
         return response()->json($explorer);
     }
+
+    public function history(Explorer $explorer)
+    {
+        return response()->json([
+            'explorer' => $explorer->id,
+            'history' => $explorer->histories
+        ]);
+    }
 }

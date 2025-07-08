@@ -2,6 +2,7 @@
 
 namespace App\Services;
 use App\Models\Explorer;
+use App\Models\History;
 
 class ExplorerService
 {
@@ -17,6 +18,13 @@ class ExplorerService
 
     public function updateLocation(Explorer $explorer, array $data): Explorer
     {
+
+        History::create([
+            'explorer_id' => $explorer->id,
+            'latitude' => $data['latitude'],
+            'longitude' => $data['longitude'],
+        ]);
+
         $explorer->update([
             'latitude' => $data['latitude'],
             'longitude' => $data['longitude'],
