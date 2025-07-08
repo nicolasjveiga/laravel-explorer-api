@@ -8,7 +8,6 @@ use Illuminate\Http\JsonResponse;
 
 class TradeController extends Controller
 {
-
     protected $tradeService;
 
     public function __construct(TradeService $tradeService)
@@ -25,5 +24,4 @@ class TradeController extends Controller
             return response()->json(['error' => $e->getMessage()], 422);
         }
     }
-
 }

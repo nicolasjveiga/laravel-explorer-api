@@ -2,11 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 
-class Explorer extends Model
+class Explorer extends Authenticatable
 {
-    protected $fillable = ['name', 'age', 'latitude', 'longitude'];
+    use HasApiTokens, Notifiable;
+
+    protected $fillable = ['name', 'email', 'password', 'age', 'latitude', 'longitude'];
+
+    protected $hidden = ['password', 'remember_token'];
 
     public function items()
     {
