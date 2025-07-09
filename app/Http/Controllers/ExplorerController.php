@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Explorer;
 use App\Services\ExplorerService;
-use App\Http\Requests\StoreExplorerRequest;
 use App\Http\Requests\UpdateExplorerLocationRequest;
 
 
@@ -25,15 +24,6 @@ class ExplorerController extends Controller
         return response()->json($explorers);
     }
 
-    public function store(StoreExplorerRequest $request)
-    {
-        $validated = $request->validated();
-
-        $explorer = $this->explorerService->createExplorer($validated);
-
-        return response()->json($explorer, 201);
-    }
-
     public function show(Explorer $explorer)
     {
         $explorer->load(['items', 'sentTrades', 'receivedTrades']);
@@ -48,5 +38,10 @@ class ExplorerController extends Controller
         $explorer = $this->explorerService->updateLocation($explorer, $validated);
 
         return response()->json($explorer);
+    }
+
+    public function history(Explorer $explorer)
+    {
+        return response()->json(['explorer' => $explorer->id, 'history' => $explorer->histories]);
     }
 }

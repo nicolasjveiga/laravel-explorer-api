@@ -36,4 +36,7 @@ class ItemController extends Controller
         return response()->json($item);
     }
 
+    public function reports(Item $item)
+    {
+    }
 }
