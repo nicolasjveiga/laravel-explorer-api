@@ -25,7 +25,7 @@ class ExplorerService
         return Explorer::where('email', $email)->first();
     }
 
-    /**
+    /** 
      * @param  Explorer  $explorer
      * @param  array     $data
      * @return Explorer
